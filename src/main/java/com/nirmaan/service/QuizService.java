@@ -12,15 +12,9 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class QuizService implements IQuizService {
-
-	private final QuizRepository quizRepository;
-
+	
 	@Autowired
-	public QuizService(QuizRepository quizRepository) {
-		this.quizRepository = quizRepository;
-	}
-
-	// --- Basic CRUD Operations (Read/Delete) ---
+	private QuizRepository quizRepository;
 
 	@Override
 	public Quiz createQuiz(Quiz quiz) {
@@ -65,8 +59,7 @@ public class QuizService implements IQuizService {
 
 	@Override
 	public Quiz updateQuiz(int quizId, Quiz quizDetails) {
-		Quiz existingQuiz = quizRepository.findById(quizId)
-				.orElseThrow(() -> new ResourceNotFoundException("Quiz not found with id: " + quizId));
+		Quiz existingQuiz = quizRepository.findById(quizId).orElseThrow();
 
 		existingQuiz.setQuizText(quizDetails.getQuizText());
 

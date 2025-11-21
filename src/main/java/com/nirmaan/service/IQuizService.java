@@ -11,7 +11,6 @@ public interface IQuizService {
 
 	List<Quiz> getAllQuizzes();
 
-	// The method containing the complex nested update logic
 	Quiz updateQuiz(int quizId, Quiz quizDetails);
 
 	void deleteQuiz(int quizId);
